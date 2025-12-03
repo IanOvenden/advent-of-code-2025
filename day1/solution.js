@@ -1,7 +1,7 @@
 import makeTextFileLineIterator from '../../common/js/file.js';
 
 //global vars
-let sequences = new Array();
+
 let rotation = '';
 let modifier = '';
 let currentRotation = 50; // dial starts at 50
@@ -26,10 +26,6 @@ function processLine(line) {
       zeroCount += 1;
     }
   }
-}
-
-function compareNumbers(a, b) {
-  return a - b;
 }
 
 async function run() {

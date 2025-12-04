@@ -6,6 +6,7 @@ let idsAry = [];
 let minRange = 0;
 let maxRange = 0;
 let answer = 0;
+let answer2 = 0;
 
 //Line iteration function
 function processLine(line) {
@@ -18,6 +19,7 @@ function processLine(line) {
       maxRange = parseInt(id.split('-')[1]);
 
       while (minRange <= maxRange) {
+        // answer 1
         // Processing each ID in the range
         const halfLength = Math.floor(minRange.toString().length / 2);
         const firstHalf = minRange.toString().substring(0, halfLength);
@@ -25,6 +27,24 @@ function processLine(line) {
 
         if (firstHalf === secondHalf) {
           answer += parseInt(minRange);
+        }
+
+        // answer 2
+        const numStr = minRange.toString();
+        let foundPattern = false;
+
+        // Check for repeating patterns of different lengths
+        for (let patternLen = 1; patternLen <= Math.floor(numStr.length / 2); patternLen++) {
+          if (numStr.length % patternLen === 0) {
+            const pattern = numStr.substring(0, patternLen);
+            const repeats = numStr.length / patternLen;
+
+            if (pattern.repeat(repeats) === numStr) {
+              answer2 += parseInt(minRange);
+              foundPattern = true;
+              break;
+            }
+          }
         }
         minRange++;
       }
@@ -42,6 +62,7 @@ async function run() {
 
   // Enter the answers
   document.getElementById('answer1').innerHTML = answer;
+  document.getElementById('answer2').innerHTML = answer2;
 }
 
 run();

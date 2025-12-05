@@ -1,5 +1,4 @@
 import makeTextFileLineIterator from '../../common/js/file.js';
-import { splitString } from '../../common/js/file.js';
 
 //set global vars
 let idsAry = [];
@@ -12,7 +11,7 @@ let answer2 = 0;
 function processLine(line) {
   if (line !== '') {
     // core solution code here
-    idsAry = splitString(line, ',');
+    idsAry = line.split(',');
 
     idsAry.forEach(id => {
       minRange = parseInt(id.split('-')[0]);

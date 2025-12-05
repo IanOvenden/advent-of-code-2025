@@ -29,8 +29,4 @@ async function* makeTextFileLineIterator(fileURL) {
   }
 }
 
-export function splitString(str, delimiter = ',') {
-  return str.split(delimiter);
-}
-
 export default makeTextFileLineIterator;
